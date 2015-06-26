@@ -12,7 +12,6 @@ import javax.faces.convert.ConverterException;
 import javax.faces.render.FacesRenderer;
 
 import org.primefaces.renderkit.CoreRenderer;
-import org.primefaces.util.WidgetBuilder;
 
 @FacesRenderer(componentFamily = Knob.COMPONENT_FAMILY, rendererType = KnobRenderer.RENDERER_TYPE)
 public class KnobRenderer extends CoreRenderer {
@@ -92,18 +91,18 @@ public class KnobRenderer extends CoreRenderer {
 	}
 
 	private void encodeScript(FacesContext context, Knob component) throws IOException {
-		String clientId = component.getClientId();
-		String widgetVar = component.resolveWidgetVar();
-
-		WidgetBuilder wb = getWidgetBuilder(context);
-
-		wb.initWithDomReady("Knob", widgetVar, clientId);
-		wb.attr("labelTemplate", component.getLabelTemplate());
-		wb.callback("onchange", "function(value)", component.getOnchange());
-
-		encodeClientBehaviors(context, component);
-
-		wb.finish();
+//		String clientId = component.getClientId();
+//		String widgetVar = component.resolveWidgetVar();
+//
+//		WidgetBuilder wb = getWidgetBuilder(context);
+//
+//		wb.initWithDomReady("Knob", widgetVar, clientId);
+//		wb.attr("labelTemplate", component.getLabelTemplate());
+//		wb.callback("onchange", "function(value)", component.getOnchange());
+//
+//		encodeClientBehaviors(context, component);
+//
+//		wb.finish();
 	}
 
 	@Override

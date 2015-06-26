@@ -1,5 +1,6 @@
 package it.strazz.faces.documentviewer;
 
+import it.strazz.faces.DynamicResourceBuilder;
 import it.strazz.faces.util.Strings;
 
 import java.io.IOException;
@@ -18,7 +19,6 @@ import javax.faces.render.FacesRenderer;
 
 import org.primefaces.renderkit.CoreRenderer;
 import org.primefaces.util.ComponentUtils;
-import org.primefaces.util.DynamicResourceBuilder;
 
 @FacesRenderer(componentFamily = DocumentViewer.COMPONENT_FAMILY, rendererType = DocumentViewerRenderer.RENDERER_TYPE)
 public class DocumentViewerRenderer extends CoreRenderer {
@@ -127,6 +127,7 @@ public class DocumentViewerRenderer extends CoreRenderer {
 						requestPath);
 			}
 		} else {
+			
 			return DynamicResourceBuilder.build(context,
 					documentViewer.getValue(), documentViewer,
 					documentViewer.isCache());

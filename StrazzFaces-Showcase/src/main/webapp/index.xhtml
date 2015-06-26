@@ -5,8 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" xmlns:s="http://it.strazz.faces/ui"
-	template="/template.xhtml">
+	xmlns:p="http://primefaces.org/ui" xmlns:s="http://it.strazz.faces/ui">
 	<ui:define name="content">
 		<div class="container">
 			<div class="row">
@@ -20,6 +19,24 @@
 						If you want to contribute <a target="_blank" href="https://github.com/francesco-strazzullo/StrazzFaces">here's the GitHub Repo</a>. Enjoy.
 					</p>
 				</div>
+				
+				<h4>URL</h4>
+				<s:documentViewer 
+					height="500"
+					unmapped="true"
+					url="/files/Mela_Rossa.pdf" />
+				<h4>Resource</h4>
+				<s:documentViewer 
+					height="500"
+					unmapped="true"
+					library="books"
+					name="AliceInWonderland.pdf" />
+				<h4>Dynamic</h4>
+				<f:event listener="#{documentViewerBean.onPrerender}" type="preRenderView" />
+				<s:documentViewer 
+					height="500"
+					unmapped="true"
+					value="#{documentViewerBean.content}" />
 			</div>
 		</div>
 	</ui:define>

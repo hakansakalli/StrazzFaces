@@ -10,7 +10,6 @@ import javax.faces.component.UINamingContainer;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.component.api.Widget;
-import org.primefaces.context.RequestContext;
 
 @FacesComponent(value = AnalogClock.COMPONENT_TYPE)
 @ResourceDependencies({
@@ -64,7 +63,8 @@ public class AnalogClock extends UIComponentBase implements Widget {
 	}
 	
 	public Object getColorTheme() {
-		return getStateHelper().eval(PropertyKeys.colorTheme, RequestContext.getCurrentInstance().getApplicationContext().getConfig().getTheme());
+		return null;
+	//	return getStateHelper().eval(PropertyKeys.colorTheme, RequestContext.getCurrentInstance().getApplicationContext().getConfig().getTheme());
 	}
 
 	public void setColorTheme(Object colorScheme) {

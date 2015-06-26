@@ -8,7 +8,6 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import org.primefaces.renderkit.CoreRenderer;
-import org.primefaces.util.WidgetBuilder;
 
 @FacesRenderer(componentFamily = Switch.COMPONENT_FAMILY, rendererType = SwitchRenderer.RENDERER_TYPE)
 public class SwitchRenderer extends CoreRenderer {
@@ -36,17 +35,17 @@ public class SwitchRenderer extends CoreRenderer {
 	}
 
 	private void encodeScript(FacesContext context, Switch switchComponent) throws IOException {
-		String clientId = switchComponent.getClientId();
-		String widgetVar = switchComponent.resolveWidgetVar();
-
-		WidgetBuilder wb = getWidgetBuilder(context);
-
-		wb.init("Switch", widgetVar, clientId);
-		wb.attr("widgetName", widgetVar);
-		wb.attr("type", getSwitchType(switchComponent));
-		encodeClientBehaviors(context, switchComponent);
-
-		wb.finish();
+//		String clientId = switchComponent.getClientId();
+//		String widgetVar = switchComponent.resolveWidgetVar();
+//
+//		WidgetBuilder wb = getWidgetBuilder(context);
+//
+//		wb.init("Switch", widgetVar, clientId);
+//		wb.attr("widgetName", widgetVar);
+//		wb.attr("type", getSwitchType(switchComponent));
+//		encodeClientBehaviors(context, switchComponent);
+//
+//		wb.finish();
 
 	}
 

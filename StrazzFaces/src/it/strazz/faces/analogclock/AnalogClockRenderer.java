@@ -12,9 +12,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
-import org.primefaces.json.JSONObject;
 import org.primefaces.renderkit.CoreRenderer;
-import org.primefaces.util.WidgetBuilder;
 
 @FacesRenderer(componentFamily = AnalogClock.COMPONENT_FAMILY, rendererType = AnalogClockRenderer.RENDERER_TYPE)
 public class AnalogClockRenderer extends CoreRenderer {
@@ -39,27 +37,27 @@ public class AnalogClockRenderer extends CoreRenderer {
 
 	protected void encodeScript(FacesContext context, AnalogClock analogClock) throws IOException {
 
-		String clientId = analogClock.getClientId();
-		String widgetVar = analogClock.resolveWidgetVar();
-
-		WidgetBuilder wb = getWidgetBuilder(context);
-
-		wb.init("AnalogClock", widgetVar, clientId);
-		wb.attr("mode", analogClock.getMode());
-		wb.attr("time", analogClock.getStartTime() != null ? analogClock.getStartTime().getTime() : null);
-		if (analogClock.getColorTheme() != null) {
-			if (analogClock.getColorTheme() instanceof String) {
-				wb.attr("colorTheme", analogClock.getColorTheme().toString());
-			} else {
-				wb.attr("themeObject", this.escapeText(new JSONObject(colorThemeToMap((ColorTheme) analogClock.getColorTheme())).toString()));
-			}
-		}
-
-		if (analogClock.getWidth() != null) {
-			wb.attr("width", analogClock.getWidth());
-		}
-
-		wb.finish();
+//		String clientId = analogClock.getClientId();
+//		String widgetVar = analogClock.resolveWidgetVar();
+//
+//		WidgetBuilder wb = getWidgetBuilder(context);
+//
+//		wb.init("AnalogClock", widgetVar, clientId);
+//		wb.attr("mode", analogClock.getMode());
+//		wb.attr("time", analogClock.getStartTime() != null ? analogClock.getStartTime().getTime() : null);
+//		if (analogClock.getColorTheme() != null) {
+//			if (analogClock.getColorTheme() instanceof String) {
+//				wb.attr("colorTheme", analogClock.getColorTheme().toString());
+//			} else {
+//				wb.attr("themeObject", this.escapeText(new JSONObject(colorThemeToMap((ColorTheme) analogClock.getColorTheme())).toString()));
+//			}
+//		}
+//
+//		if (analogClock.getWidth() != null) {
+//			wb.attr("width", analogClock.getWidth());
+//		}
+//
+//		wb.finish();
 	}
 
 	private Map colorThemeToMap(ColorTheme colorTheme) {

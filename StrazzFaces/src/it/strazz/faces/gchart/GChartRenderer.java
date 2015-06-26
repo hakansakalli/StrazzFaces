@@ -13,9 +13,7 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import org.primefaces.json.JSONArray;
-import org.primefaces.json.JSONObject;
 import org.primefaces.renderkit.CoreRenderer;
-import org.primefaces.util.WidgetBuilder;
 
 @FacesRenderer(componentFamily = GChart.COMPONENT_FAMILY, rendererType = GChartRenderer.RENDERER_TYPE)
 public class GChartRenderer extends CoreRenderer {
@@ -56,28 +54,28 @@ public class GChartRenderer extends CoreRenderer {
 
 	protected void encodeScript(FacesContext context, GChart chart) throws IOException {
 
-		String clientId = chart.getClientId();
-		String widgetVar = chart.resolveWidgetVar();
-
-		WidgetBuilder wb = getWidgetBuilder(context);
-
-		wb.init("GChart", widgetVar, clientId);
-		
-		GChartModel m = (GChartModel) chart.getValue();
-		
-		String data = extractDataFromModel(m);
-		String options = new JSONObject(m.getOptions()).toString();
-		
-		wb.attr("data",this.escapeText(data));
-		wb.attr("type",m != null ? m.getChartType().getChartName() : "");
-		wb.attr("options", this.escapeText(options));
-		wb.attr("title",chart.getTitle());
-		wb.attr("width",chart.getWidth());
-		wb.attr("height",chart.getHeight());
-		
-		encodeClientBehaviors(context, chart);
-		
-		wb.finish();
+//		String clientId = chart.getClientId();
+//		String widgetVar = chart.resolveWidgetVar();
+//
+//		WidgetBuilder wb = getWidgetBuilder(context);
+//
+//		wb.init("GChart", widgetVar, clientId);
+//		
+//		GChartModel m = (GChartModel) chart.getValue();
+//		
+//		String data = extractDataFromModel(m);
+//		String options = new JSONObject(m.getOptions()).toString();
+//		
+//		wb.attr("data",this.escapeText(data));
+//		wb.attr("type",m != null ? m.getChartType().getChartName() : "");
+//		wb.attr("options", this.escapeText(options));
+//		wb.attr("title",chart.getTitle());
+//		wb.attr("width",chart.getWidth());
+//		wb.attr("height",chart.getHeight());
+//		
+//		encodeClientBehaviors(context, chart);
+//		
+//		wb.finish();
 	}
 
 	protected String extractDataFromModel(GChartModel m) {

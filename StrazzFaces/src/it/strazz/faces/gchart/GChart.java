@@ -3,7 +3,6 @@ package it.strazz.faces.gchart;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Map;
 
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
@@ -12,14 +11,9 @@ import javax.faces.component.UINamingContainer;
 import javax.faces.component.UIOutput;
 import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
-import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.FacesEvent;
 
 import org.primefaces.component.api.Widget;
-import org.primefaces.event.SelectEvent;
-import org.primefaces.json.JSONArray;
-import org.primefaces.json.JSONException;
-import org.primefaces.util.Constants;
 
 @FacesComponent(value = GChart.COMPONENT_TYPE)
 @ResourceDependencies({
@@ -96,38 +90,40 @@ public class GChart extends UIOutput implements Widget,ClientBehaviorHolder {
 	@Override
 	public void queueEvent(FacesEvent event) {
 		
-		FacesContext context = getFacesContext();
-		if(isRequestSource(context) && event instanceof AjaxBehaviorEvent) {
-           Map<String,String> params = context.getExternalContext().getRequestParameterMap();
-            String eventName = params.get(Constants.RequestParams.PARTIAL_BEHAVIOR_EVENT_PARAM);
-
-            if(eventName.equals("select")) {
-                AjaxBehaviorEvent behaviorEvent = (AjaxBehaviorEvent) event;
-                String clientId = this.getClientId(context);
-                
-                Object value = params.get(clientId + "_hidden");
-                try {
-					value = new JSONArray(value.toString());
-				} catch (JSONException e) {
-					e.printStackTrace();
-					value = "";
-				}
-                
-                SelectEvent selectEvent = new SelectEvent(this, behaviorEvent.getBehavior(), value);
-                selectEvent.setPhaseId(behaviorEvent.getPhaseId());
-
-                super.queueEvent(selectEvent);
-            }
-        }
-        else {
-            super.queueEvent(event);
-        }
+//		FacesContext context = getFacesContext();
+//		if(isRequestSource(context) && event instanceof AjaxBehaviorEvent) {
+//           Map<String,String> params = context.getExternalContext().getRequestParameterMap();
+//            String eventName = params.get(Constants.RequestParams.PARTIAL_BEHAVIOR_EVENT_PARAM);
+//
+//            if(eventName.equals("select")) {
+//                AjaxBehaviorEvent behaviorEvent = (AjaxBehaviorEvent) event;
+//                String clientId = this.getClientId(context);
+//                
+//                Object value = params.get(clientId + "_hidden");
+//                try {
+//					value = new JSONArray(value.toString());
+//				} catch (JSONException e) {
+//					e.printStackTrace();
+//					value = "";
+//				}
+//                
+//                SelectEvent selectEvent = new SelectEvent(this, behaviorEvent.getBehavior(), value);
+//                selectEvent.setPhaseId(behaviorEvent.getPhaseId());
+//
+//                super.queueEvent(selectEvent);
+//            }
+//        }
+//        else {
+//            super.queueEvent(event);
+//        }
 	}
 	
 	public boolean isRequestSource(FacesContext context) {
-        String partialSource = context.getExternalContext().getRequestParameterMap().get(Constants.RequestParams.PARTIAL_SOURCE_PARAM);
+     //   String partialSource = context.getExternalContext().getRequestParameterMap().get(Constants.RequestParams.PARTIAL_SOURCE_PARAM);
 
-        return partialSource != null && this.getClientId(context).equals(partialSource);
+       // return partialSource != null && this.getClientId(context).equals(partialSource);
+		
+		return false;
     }
 	
 	protected static enum PropertyKeys {
